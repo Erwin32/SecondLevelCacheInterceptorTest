@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  test-api:
+    scale: 1
+    image: "test-api"
+    depends_on: 
+      - test-redis
+    networks:
+      - test-internal
+    expose:
+      - 80
+    ports:
+      - 8080:80
+    build:
+      context: ..
+      dockerfile: ./L2CacheTest/Dockerfile
+          
+  test-redis:
+    scale: 1
+    image: test-redis
+    build:
+      context: ./Redis
+      dockerfile: ./Dockerfile
+    networks:
+      - test-internal
+    expose:
+      - 6379
+    ports:
+      - 6379:6379
+      
+networks:
+  test-internal:
+    driver: bridge
+    external: false
+    
