@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace L2CacheTest.Migrations
 {
     [DbContext(typeof(TestContext))]
-    [Migration("20210505201943_Init")]
-    partial class Init
+    [Migration("20210509195849_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,9 +22,9 @@ namespace L2CacheTest.Migrations
 
             modelBuilder.Entity("L2CacheTest.Entry", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Data")
@@ -40,7 +40,7 @@ namespace L2CacheTest.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1L,
+                            Id = 1,
                             Data = 1245,
                             Name = "Test"
                         });

@@ -23,16 +23,14 @@ namespace L2CacheTest
 
             services.AddEasyCaching(o =>
             {
-                o.WithMessagePack("Pack");
-
                 o.UseRedis(cfg =>
                 {
                     cfg.EnableLogging = true;
                     cfg.SerializerName = "Pack";
-                    cfg.DBConfig.Endpoints.Add(new ServerEndPoint{Host = "test-redis", Port = 6379});
+                    cfg.DBConfig.Endpoints.Add(new ServerEndPoint {Host = "test-redis", Port = 6379});
                     cfg.DBConfig.AllowAdmin = true;
                     cfg.DBConfig.ConnectionTimeout = 10000;
-                }, "DbRedis");
+                }, "DbRedis").WithMessagePack("Pack");
             });
 
             services.AddEFSecondLevelCache(o =>

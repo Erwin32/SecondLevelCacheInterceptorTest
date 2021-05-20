@@ -2,7 +2,7 @@
 
 namespace L2CacheTest.Migrations
 {
-    public partial class Init : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,7 +10,7 @@ namespace L2CacheTest.Migrations
                 name: "Entries",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Data = table.Column<int>(type: "int", nullable: false)
@@ -23,7 +23,7 @@ namespace L2CacheTest.Migrations
             migrationBuilder.InsertData(
                 table: "Entries",
                 columns: new[] { "Id", "Data", "Name" },
-                values: new object[] { 1L, 1245, "Test" });
+                values: new object[] { 1, 1245, "Test" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
